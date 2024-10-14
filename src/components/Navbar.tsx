@@ -17,14 +17,14 @@ const Navbar = () => {
         <div className="bg-white rounded-full w-7 h-7 flex items-center justify-center cursor-pointer relative hover:bg-gray-200 duration-300">
           <Image src="/announcement.png" alt="" width={20} height={20}/>
           {/* NOTIFICATION ICON */}
-          <div className="absolute -top-3 -right-3 w-5 h-5 rounded-full flex items-center justify-center bg-purple-500 text-white">1</div>
+          <div className="absolute -top-3 -right-3 w-5 h-5 rounded-full flex items-center justify-center bg-purple-500 text-white text-[10px]">1</div>
         </div>
         <div className="flex flex-col">
           <span className="text-xs leading-3 font-medium">Felipe Matthew</span>
           <span className="text-[10px] text-gray-500 text-right">Admin</span>
         </div>
         <Image src="/avatar.png" alt="avatar" width={36} height={36} className="rounded-full cursor-pointer" />
-        <Sun />
+        <Sun width={20} height={20} className="cursor-pointer"/>
       </div>
     </div>
   )
