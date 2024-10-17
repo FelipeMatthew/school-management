@@ -12,7 +12,7 @@ const EventCalendar = () => {
   const [value, onChange] = useState<Value>(new Date());
   return (
     <div>
-      <Calendar onChange={onChange} value={value} />
+      <Calendar locale="en-US" onChange={onChange} value={value} />
     </div>
   )
 }
