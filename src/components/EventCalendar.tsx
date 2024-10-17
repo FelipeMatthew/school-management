@@ -23,18 +23,6 @@ const events = [
     time: "12:00 PM - 2:00 PM",
     description: "Lorem ipsum dolor sit amet, consectetutr adpstrinsg elite",
   },
-  {
-    id: 3,
-    title: "Lorem ipsum dolor",
-    time: "12:00 PM - 2:00 PM",
-    description: "Lorem ipsum dolor sit amet, consectetutr adpstrinsg elite",
-  },
-  {
-    id: 4,
-    title: "Lorem ipsum dolor",
-    time: "12:00 PM - 2:00 PM",
-    description: "Lorem ipsum dolor sit amet, consectetutr adpstrinsg elite",
-  },
 ];
 
 const EventCalendar = () => {
