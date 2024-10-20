@@ -16,6 +16,8 @@ dashboard - pega a rota
 
 2. flex-wrap - usado para quebrar componentes para ficar responsivo, ex 4 cards, quebrando ele fica 2 cards por linha
 
+3. .self-end {  align-self: flex-end; } - Vai pegar o componente e por padrão ele vai ter comportamento de se alinhar no final do container
+
 ## TODO
 
 1. DARKMODE

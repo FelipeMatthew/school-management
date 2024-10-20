@@ -1,8 +1,8 @@
 "use client"
+import Announcements from '@/src/components/Announcements'
+import BigCalendar from '@/src/components/BigCalendar'
 import React from 'react'
-import EventCalendar from '../../../components/EventCalendar'
-import Announcements from '../../../components/Announcements'
-import BigCalendar from '../../../components/BigCalendar'
+
 
 const TeacherPage = () => {
   return (
