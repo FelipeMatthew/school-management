@@ -75,7 +75,7 @@ const StudentsListPage = () => {
       <td className="hidden xl:table-cell">{item.address}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
+          <Link href={`/list/students/${item.id}`}>
             <button
               type="button"
               className="w-7 h-7 flex items-center justify-center rounded-full bg-blue-300"
