@@ -1,3 +1,4 @@
+import FormModal from "@/src/components/FormModal";
 import Pagination from "@/src/components/Pagination";
 import Table from "@/src/components/Table";
 import TableSearch from "@/src/components/TableSearch";
@@ -52,21 +53,11 @@ const AssignmentsListPage = () => {
       <td className="hidden md:table-cell">{item.dueDate}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-            <button
-              type="button"
-              className="w-7 h-7 flex items-center justify-center rounded-full bg-blue-300"
-            >
-              <Pencil  width={16} height={16} className="text-white" />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button
-              type="button"
-              className="w-7 h-7 flex items-center justify-center rounded-full bg-purple-300"
-            >
-              <Trash width={16} height={16} className="text-white" />
-            </button>
+            <>
+            <FormModal table="assignment" type="update" data={item} />
+            <FormModal table="assignment" type="delete" id={item.id} />
+          </>
           )}
         </div>
       </td>
@@ -94,12 +85,8 @@ const AssignmentsListPage = () => {
               <Image src="/sort.png" width={14} height={14} alt="" />
             </button>
             {role === "admin" && (
-              <button
-                type="button"
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100"
-              >
-                <Image src="/plus.png" width={14} height={14} alt="" />
-              </button>
+              <FormModal table="assignment" type="create" />
+
             )}
           </div>
         </div>

@@ -1,3 +1,4 @@
+import FormModal from "@/src/components/FormModal";
 import Pagination from "@/src/components/Pagination";
 import Table from "@/src/components/Table";
 import TableSearch from "@/src/components/TableSearch";
@@ -11,7 +12,7 @@ type ParentType = {
   name: string;
   email?: string;
   students: string[];
-  phone: string; 
+  phone: string;
   address: string;
 };
 
@@ -60,21 +61,11 @@ const ParentListPage = () => {
       <td className="hidden xl:table-cell">{item.address}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-            <button
-              type="button"
-              className="w-7 h-7 flex items-center justify-center rounded-full bg-blue-300"
-            >
-              <Pencil width={16} height={16} className="text-white" />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button
-              type="button"
-              className="w-7 h-7 flex items-center justify-center rounded-full bg-purple-300"
-            >
-              <Trash width={16} height={16} className="text-white" />
-            </button>
+            <>
+              <FormModal table="parent" type="update" data={item} />
+              <FormModal table="parent" type="delete" id={item.id} />
+            </>
           )}
         </div>
       </td>
@@ -101,14 +92,7 @@ const ParentListPage = () => {
             >
               <Image src="/sort.png" width={14} height={14} alt="" />
             </button>
-            {role === "admin" && (
-              <button
-                type="button"
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100"
-              >
-                <Image src="/plus.png" width={14} height={14} alt="" />
-              </button>
-            )}
+            {role === "admin" && <FormModal table="parent" type="create" />}
           </div>
         </div>
       </div>
