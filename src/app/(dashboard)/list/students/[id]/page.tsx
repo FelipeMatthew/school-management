@@ -1,5 +1,6 @@
 import Announcements from "@/src/components/Announcements";
 import BigCalendar from "@/src/components/BigCalendar";
+import FormModal from "@/src/components/FormModal";
 import Performance from "@/src/components/Performance";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,7 +24,27 @@ const SingleStudentPage = () => {
               />
             </div>
             <div className="w-2/3 flex flex-col justify-between gap-4">
-              <h1 className="text-xl font-semibold">Ugly Horse</h1>
+              <div className="flex justify-between">
+                <h1 className="text-xl font-semibold">Leonard Doe</h1>
+                <FormModal
+                  table="student"
+                  type="update"
+                  data={{
+                    id: 1,
+                    username: "1234567890",
+                    firstName: "Jon",
+                    lastName: "Jon",
+                    email: "john@doe.com",
+                    password: "john@doe.com",
+                    img: "https://images.pexels.com/photos/2888150/pexels-photo-2888150.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                    phone: "1234567890",
+                    address: "123 Main St, Anytown, USA",
+                    sex: "male",
+                    bloodType: "a",
+                    birthday: "2000-02-02",
+                  }}
+                />
+              </div>
               <p className="text-sm text-gray-500">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
                 voluptas aperiam facilis perspiciatis, sapiente eligendi
@@ -113,20 +134,29 @@ const SingleStudentPage = () => {
       </div>
       {/* RIGHT */}
       <div className="w-full xl:w-1/3 flex flex-col">
-      <div className="bg-white p-4 rounded-md ">
-        <h1 className="text-xl font-semibold">Shortcuts</h1>
-        <div className="flex mt-4 gap-4 flex-wrap text-xs text-gray-500">
-          <Link className="p-2 rounded-md bg-blue-50" href="/">Student&apos;s Lessons</Link>
-          <Link className="p-2 rounded-md bg-yellow-50" href="/">Student&apos;s Teachers</Link>
-          <Link className="p-2 rounded-md bg-purple-50" href="/">Student&apos;s Results</Link>
-          <Link className="p-2 rounded-md bg-red-50" href="/">Student&apos;s Exams</Link>
-          <Link className="p-2 rounded-md bg-gray-100" href="/">Student&apos;s Assignments</Link>
+        <div className="bg-white p-4 rounded-md ">
+          <h1 className="text-xl font-semibold">Shortcuts</h1>
+          <div className="flex mt-4 gap-4 flex-wrap text-xs text-gray-500">
+            <Link className="p-2 rounded-md bg-blue-50" href="/">
+              Student&apos;s Lessons
+            </Link>
+            <Link className="p-2 rounded-md bg-yellow-50" href="/">
+              Student&apos;s Teachers
+            </Link>
+            <Link className="p-2 rounded-md bg-purple-50" href="/">
+              Student&apos;s Results
+            </Link>
+            <Link className="p-2 rounded-md bg-red-50" href="/">
+              Student&apos;s Exams
+            </Link>
+            <Link className="p-2 rounded-md bg-gray-100" href="/">
+              Student&apos;s Assignments
+            </Link>
+          </div>
         </div>
+        <Performance />
+        <Announcements />
       </div>
-      <Performance />
-      <Announcements/>
-      </div>
-      
     </div>
   );
 };

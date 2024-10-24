@@ -3,7 +3,15 @@
 import { Pencil, Plus, Trash, X } from "lucide-react";
 import { useState } from "react";
 import TeacherForm from "./forms/TeacherForm";
+import StudentForm from "./forms/StudentForm";
 
+
+// Como se fosse map do go 
+const forms: {[key: string]: (type: "create" | "update", data?: any) => JSX.Element}={
+  teacher: (type, data) => <TeacherForm type={type} data={data}/>,
+  student: (type, data) => <StudentForm type={type} data={data}/>
+}
+ 
 // TODO: PROPS
 const FormModal = ({
   table,
@@ -61,9 +69,9 @@ const FormModal = ({
           Delete
         </button>
       </form>
-    ) : (
-      <TeacherForm type="update" data={data}/>
-    );
+    ) : ((type === "create" || type === "update") && forms[table]) ? (
+      forms[table](type,data)
+    ) : ( " Form not found :(")
   };
 
   return (
