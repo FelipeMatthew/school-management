@@ -18,6 +18,8 @@ dashboard - pega a rota
 
 3. .self-end {  align-self: flex-end; } - Vai pegar o componente e por padrão ele vai ter comportamento de se alinhar no final do container
 
+4. https://www.npmjs.com/package/@hookform/resolvers#zod - SERVE PARA TRABALHAR COM ZOD E HOOK FORM DE UMA MANEIRA MAIS FACIL
+
 ## TODO
 
 1. DARKMODE
