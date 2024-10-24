@@ -2,14 +2,42 @@
 
 import { Pencil, Plus, Trash, X } from "lucide-react";
 import { useState } from "react";
-import TeacherForm from "./forms/TeacherForm";
-import StudentForm from "./forms/StudentForm";
+import dynamic from "next/dynamic";
+
+// Importa e trabalha de maneira dinamica
+// Dynamic loading - Lazy loading - Apenas no lado do cliente
+// const TeacherForm = dynamic(() => import("./forms/TeacherForm"), {
+//   loading: () => <h1>Loading...</h1>
+// })
+
+const TeacherForm = dynamic(() => import("./forms/TeacherForm"))
+const StudentForm = dynamic(() => import("./forms/StudentForm"))
+const ParentForm = dynamic(() => import("./forms/ParentForm"))
+const ClassForm = dynamic(() => import("./forms/ClassForm"))
+const SubjectForm = dynamic(() => import("./forms/SubjectForm"))
+const LessonForm = dynamic(() => import("./forms/LessonForm"))
+const ExamForm = dynamic(() => import("./forms/ExamForm"))
+const AssignmentForm = dynamic(() => import("./forms/AssignmentForm"))
+const ResultForm = dynamic(() => import("./forms/ResultForm"))
+const AttendanceForm = dynamic(() => import("./forms/AttendanceForm"))
+const EventForm = dynamic(() => import("./forms/EventForm"))
+const AnnouncementForm = dynamic(() => import("./forms/AnnouncementForm"))
 
 
 // Como se fosse map do go 
 const forms: {[key: string]: (type: "create" | "update", data?: any) => JSX.Element}={
   teacher: (type, data) => <TeacherForm type={type} data={data}/>,
-  student: (type, data) => <StudentForm type={type} data={data}/>
+  student: (type, data) => <StudentForm type={type} data={data}/>,
+  parent: (type, data) => <ParentForm type={type} data={data}/>,
+  class: (type, data) => <ClassForm type={type} data={data}/>,
+  subject: (type, data) => <SubjectForm type={type} data={data}/>,
+  lesson: (type, data) => <LessonForm type={type} data={data}/>,
+  exam: (type, data) => <ExamForm type={type} data={data}/>,
+  assignment: (type, data) => <AssignmentForm type={type} data={data}/>,
+  result: (type, data) => <ResultForm type={type} data={data}/>,
+  attendance: (type, data) => <AttendanceForm type={type} data={data}/>,
+  event: (type, data) => <EventForm type={type} data={data}/>,
+  announcement: (type, data) => <AnnouncementForm type={type} data={data}/>,
 }
  
 // TODO: PROPS
@@ -71,7 +99,7 @@ const FormModal = ({
       </form>
     ) : ((type === "create" || type === "update") && forms[table]) ? (
       forms[table](type,data)
-    ) : ( " Form not found :(")
+    ) : ( "Form not found :(")
   };
 
   return (
