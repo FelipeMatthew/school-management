@@ -28,9 +28,9 @@ const data = [
 
 const FinanceChart = () => {
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
       <div className="flex justify-between items-center">
-        <h1 className="text-lg font-semibold">Finance</h1>
+        <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Finance</h1>
         <Image src="/moreDark.png" alt="more dark" width={20} height={20} />
       </div>
       <div style={{ width: "100%", height: 300 }}>
@@ -44,7 +44,7 @@ const FinanceChart = () => {
               bottom: 5,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#ddd" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#ddd" className="dark:stroke-gray-600" />
             <XAxis
               dataKey="name"
               axisLine={false}
@@ -58,7 +58,7 @@ const FinanceChart = () => {
               tickLine={false}
               tickMargin={20}
             />
-            <Tooltip />
+            <Tooltip contentStyle={{ borderRadius: "10px", borderColor: "lightgray" }} />
             <Legend
               align="center"
               verticalAlign="top"
@@ -69,12 +69,14 @@ const FinanceChart = () => {
               dataKey="income"
               stroke="#CEEBFB"
               strokeWidth={5}
+              dot={{ stroke: '#CEEBFB', strokeWidth: 2 }}
             />
             <Line
               type="monotone"
               dataKey="expense"
+              stroke="#CFCEFF" // Cor clara para o modo claro
               strokeWidth={5}
-              stroke="#CFCEFF"
+              dot={{ stroke: '#CFCEFF', strokeWidth: 2 }}
             />
           </LineChart>
         </ResponsiveContainer>

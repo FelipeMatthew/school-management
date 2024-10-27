@@ -1,12 +1,11 @@
 "use client";
-import React, { PureComponent } from "react";
+import React from "react";
 import {
   BarChart,
   Bar,
-  Rectangle,
+  CartesianGrid,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   Legend,
   ResponsiveContainer,
@@ -43,14 +42,14 @@ const data = [
 
 const AttendanceChart = () => {
   return (
-    <div className="bg-white rounded-lg p-4 h-full shadow">
+    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 h-full shadow">
       <div className="flex justify-between items-center">
-        <h1 className="font-semibold text-xl">Attendance</h1>
+        <h1 className="font-semibold text-xl text-gray-800 dark:text-gray-200">Attendance</h1>
         <Image src="/moreDark.png" alt="more dark" width={20} height={20} />
       </div>
       <ResponsiveContainer width="100%" height="90%">
-        <BarChart width={500} height={300} data={data} barSize={20}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ddd" />
+        <BarChart data={data} barSize={20}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ddd" className="dark:stroke-gray-600" />
           <XAxis
             dataKey="name"
             axisLine={false}
@@ -58,7 +57,7 @@ const AttendanceChart = () => {
             tickLine={false}
           />
           <YAxis axisLine={false} tick={{ fill: "#d1d5db" }} tickLine={false} />
-          <Tooltip contentStyle={{borderRadius: "10px", borderColor: "lightgray"}} />
+          <Tooltip contentStyle={{ borderRadius: "10px", borderColor: "lightgray" }} />
           <Legend
             align="left"
             verticalAlign="top"
@@ -66,11 +65,11 @@ const AttendanceChart = () => {
           />
           <Bar
             dataKey="present"
-            fill="#fffb00"
+            fill="#fffb00" // Amarelo
             legendType="circle"
             radius={[10, 10, 0, 0]}
           />
-          <Bar dataKey="absent" fill="#83a6ed" radius={[10, 10, 0, 0]} />
+          <Bar dataKey="absent" fill="#83a6ed" /> {/* Azul */}
         </BarChart>
       </ResponsiveContainer>
     </div>

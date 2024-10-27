@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scrollbar-width: none;
+}
+
 .react-calendar {
   width: 100% !important;
   border: none !important;
