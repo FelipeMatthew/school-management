@@ -30,6 +30,10 @@
   padding: 0px 20px !important;
 }
 
+.dark .rbc-toolbar-label {
+  color: black !important;
+}
+
 .rbc-btn-group:last-child {
   font-size: 13px !important;
 }
