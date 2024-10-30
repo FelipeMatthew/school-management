@@ -131,28 +131,30 @@ const ResultForm = ({
       </div>
 
       <div className="flex justify-between items-center flex-wrap gap-4 p-4">
-        
-      <div className="flex flex-col gap-2 w-full md:w-1/4 items-start">
-        <label htmlFor="sex" className="text-sm text-gray-500">
-          Sex
-        </label>
-        <select
-          name="sex"
-          id="sex"
-          {...register("sex")}
-          defaultValue={data?.sex}
-          className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
-        >
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-        {errors.sex?.message && (
-          <p className="text-xs text-red-400">
-            {errors.sex.message.toString()}
-          </p>
-        )}
-      </div>
+        <div className="flex flex-col gap-2 w-full md:w-1/4 items-start">
+          <label
+            htmlFor="sex"
+            className="text-sm text-gray-500 dark:text-gray-300"
+          >
+            Sex
+          </label>
+          <select
+            name="sex"
+            id="sex"
+            {...register("sex")}
+            defaultValue={data?.sex}
+            className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full dark:ring-gray-600 dark:bg-gray-800 dark:text-gray-200"
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          {errors.sex?.message && (
+            <p className="text-xs text-red-400 dark:text-red-500">
+              {errors.sex.message.toString()}
+            </p>
+          )}
+        </div>
 
       <div className="flex flex-col gap-2 w-full md:w-1/4 items-start lg:mt-3">
         <label htmlFor="img" className="text-sm text-gray-500 flex items-center gap-2 cursor-pointer">
