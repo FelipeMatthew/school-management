@@ -95,6 +95,7 @@ const TeacherListPage = async ({
 
   const query: Prisma.TeacherWhereInput = {};
 
+  // VAI PEGAR OS VALORES E TRATAR CADA UM DE UMA MENEIRA, TEMOS AQUI O CLASSID E O SEARCH POR ENQUANTO
   if (queryParams) {
     for (const [key, value] of Object.entries(queryParams)) {
       if (value !== undefined) {
@@ -103,6 +104,11 @@ const TeacherListPage = async ({
             query.lessons = {
               some: { classId: Number.parseInt(value) },
             };
+            break
+          case "search":
+            query.name = {
+              contains: value, mode: "insensitive" 
+            }
         }
       }
     }
