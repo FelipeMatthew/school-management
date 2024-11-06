@@ -55,6 +55,7 @@ const StudentsListPage = async ({
               contains: value,
               mode: "insensitive",
             };
+            break;
         }
       }
     }

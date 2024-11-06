@@ -3,19 +3,14 @@ import Pagination from "@/src/components/Pagination";
 import Table from "@/src/components/Table";
 import TableSearch from "@/src/components/TableSearch";
 import { parentsData, role } from "@/src/lib/data";
+import prisma from "@/src/lib/prisma";
+import { ITEM_PER_PAGE } from "@/src/lib/settings";
+import type { Parent, Prisma, Student } from "@prisma/client";
 import { ArrowDownWideNarrow, Pencil, SlidersHorizontal } from "lucide-react";
 import Image from "next/image";
 
-type ParentType = {
-  id: number;
-  name: string;
-  email?: string;
-  students: string[];
-  phone: string;
-  address: string;
-};
+type ParentList = Parent & { students: Student[] }
 
-// Responsividade não vai exibir algumas colunas
 const columns = [
   {
     header: "Info",
@@ -42,8 +37,45 @@ const columns = [
   },
 ];
 
-const ParentListPage = () => {
-  const renderRow = (item: ParentType) => (
+const ParentListPage = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) => {
+  const { page, ...queryParams } = searchParams;
+  const p = page ? Number.parseInt(page) : 1;
+
+  const query: Prisma.ParentWhereInput = {};
+
+  if (queryParams) {
+    for (const [key, value] of Object.entries(queryParams)) {
+      if (value !== undefined) {
+        switch (key) {
+          case "search":
+            query.name = {
+              contains: value,
+              mode: "insensitive",
+            };
+            break;
+          default: break;
+        }
+      }
+    }
+  }
+
+  // Fetching data
+  const [data, count] = await prisma.$transaction([
+    prisma.parent.findMany({
+      where: query,
+      include: {
+        students: true,
+      },
+      take: ITEM_PER_PAGE,
+      skip: ITEM_PER_PAGE * (p - 1),
+    }),
+    prisma.parent.count({ where: query }),
+  ]);
+  const renderRow = (item: ParentList) => (
     <tr
       key={item.id}
       className="border-b border-gray-200 even:bg-slate-50 dark:border-gray-700 dark:even:bg-gray-800 text-sm hover:bg-purple-50 duration-300 cursor-pointer dark:hover:bg-purple-800/30"
@@ -54,7 +86,7 @@ const ParentListPage = () => {
           <p className="text-xs text-gray-500 dark:text-gray-400">{item?.email}</p>
         </div>
       </td>
-      <td className="hidden md:table-cell">{item.students.join(", ")}</td>
+      <td className="hidden md:table-cell">{item.students.map(student =>  student.name).join(",")}</td>
       <td className="hidden lg:table-cell">{item.phone}</td>
       <td className="hidden xl:table-cell">{item.address}</td>
       <td>
@@ -95,9 +127,9 @@ const ParentListPage = () => {
         </div>
       </div>
       {/* LIST */}
-      <Table columns={columns} renderRow={renderRow} data={parentsData} />
+      <Table columns={columns} renderRow={renderRow} data={data} />
       {/* PAGINATION */}
-      <Pagination />
+      <Pagination page={p} count={count} />
     </div>
   );
 };
