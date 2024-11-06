@@ -2,7 +2,7 @@ import FormModal from "@/src/components/FormModal";
 import Pagination from "@/src/components/Pagination";
 import Table from "@/src/components/Table";
 import TableSearch from "@/src/components/TableSearch";
-import { role, teachersData } from "@/src/lib/data";
+import { role } from "@/src/lib/data";
 import prisma from "@/src/lib/prisma";
 import { ITEM_PER_PAGE } from "@/src/lib/settings";
 import type { Class, Prisma, Subject, Teacher } from "@prisma/client";
