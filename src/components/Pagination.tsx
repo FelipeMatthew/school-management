@@ -8,7 +8,7 @@ const Pagination = ({ page, count }: { page: number; count: number }) => {
   const router = useRouter();
 
   const hasPreview = ITEM_PER_PAGE * (page -1) > 0;
-  const hasNext = ITEM_PER_PAGE * (page - 1) + ITEM_PER_PAGE < count
+  const hasNext = ITEM_PER_PAGE * (page - 1) + ITEM_PER_PAGE < count;
 
   const changePage = (newPage: number) => {
     const params = new URLSearchParams(window.location.search)
